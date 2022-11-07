@@ -23,6 +23,15 @@ $sudo -u postgres psql
 postgres=# select version(); --Check Version
 ```
 ### POSTGRE COMMAND
+#### CREATE USER AND CREATE DB
+```
+// Create a new PostgreSQL user called testuser, allow user to login, but NOT creating databases
+$ sudo -u postgres createuser --login --pwprompt testuser
+
+# Create a new database called testdb, owned by testuser.
+$ sudo -u postgres createdb --owner=testuser testdb
+```
+#### SQL
 ```
 // List Databases
 postgres=# \l
@@ -72,5 +81,68 @@ mytest=# DELETE FROM cafe WHERE id = 6;
 // Quit
 mytest=# \q
 ```
+### COMMON DATA TYPES 
+```
+1. INT, SMALLINT: whole number. There is no UNSIGNED attribute in PostgreSQL.
+2. SERIAL: auto-increment integer (AUTO_INCREMENT in MySQL).
+3. REAL, DOUBLE: single and double precision floating-point number.
+4. CHAR(n) and VARCHAR(n)
+5. NUMERIC(m,n): decimal number with m total digits and n decimal places (DECIMAL(m,n) in MySQL).
+6. DATE, TIME, TIMESTAMP, INTERVAL: date and time.
+```
+### SET PASSWORD FOR POSTGRES
+```
+-- Login in to server via "psql" with user "postgres"
+$ sudo -u postgres psql
+......
+ 
+-- Change password for current user "postgres"
+postgres=# \password postgres
+Enter new password: xxxx
+Enter it again: xxxx
+  
+-- Display the user table
+postgres=# SELECT * FROM pg_user;
+ usename  | usesysid | usecreatedb | usesuper | usecatupd | userepl |  passwd  | valuntil | useconfig 
+----------+----------+-------------+----------+-----------+---------+----------+----------+-----------
+ postgres |       10 | t           | t        | t         | t       | ******** |          |
+ 
+-- Quit
+postgres=# \q
+```
+### CREATE GROUP AND USER
+```
+-- Create a login user role
+CREATE ROLE user1 LOGIN PASSWORD 'xxxx' CREATEDB VALID UNTIL 'infinity';
+
+-- Create a login superuser role
+CREATE ROLE user2 LOGIN PASSWORD 'xxxx' SUPERUSER VALID UNTIL '2019-12-31';
+
+-- Create a group role
+CREATE ROLE group1 INHERIT;
+-- Add a user (or group) to this group
+GRANT group1 TO user1;
+```
+### BACKUP AND RESTORE
+```
+-- Create a compressed backup for a database
+pg_dump -h localhost -p 5432 -U username -F c -b -v -f mydatabase.backup mydatabase
+
+-- Create a plain-text backup for a database, including the CREATE DATABASE
+pg_dump -h localhost -p 5432 -U username -C -F p -b -v -f mydatabase.backup.sql mydatabase
+```
+```
+-- Run SQL script
+$ psql -U username -f filename.sql
+```
+### TROUBLESHOOTING
+#### Set/Allow non-default user to login
+```
+/etc/postgresql/10/main/pg_hba.conf
+# TYPE  DATABASE    USER        ADDRESS          METHOD
+local   testdb      testuser                     md5
+```
+
+
 ### REFERENCES
 [Getting Started with PostgreSQL](https://www3.ntu.edu.sg/home/ehchua/programming/sql/PostgreSQL_GetStarted.html)
