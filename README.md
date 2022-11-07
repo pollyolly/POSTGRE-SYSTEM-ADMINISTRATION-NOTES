@@ -17,3 +17,10 @@ sudo apt-get -y install postgresql
 ```
 /etc/postgresql/10/main/postgresql.conf 
 ```
+### LOGIN AS SUPER USER
+```
+$sudo -u postgres psql
+postgres=# select version(); --Check Version
+```
+### REFERENCES
+[Getting Started with PostgreSQL](https://www3.ntu.edu.sg/home/ehchua/programming/sql/PostgreSQL_GetStarted.html)
