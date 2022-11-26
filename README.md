@@ -32,7 +32,7 @@ $ sudo -u postgres createuser --login --pwprompt testuser
 $ sudo -u postgres createdb --owner=testuser testdb
 ```
 #### CREATE DATABASE ROLE
-Role can function as a user or a group
+Role can function as a user or a group (used for database connection)
 ```
 mytest=# CREATE ROLE testrole WITH LOGIN PASSWORD 'password'; //Creating database user
 mytest=# ALTER ROLE testrole CREATEDB; //Allow to Create DB
