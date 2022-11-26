@@ -39,7 +39,7 @@ postgres=# \l
 // Create Database
 postgres=# CREATE DATABASE mytest;
 
-// Connect / Use Database
+//Use Database or Connect to Database
 postgres=# \c mytest
 
 // Display all tables
