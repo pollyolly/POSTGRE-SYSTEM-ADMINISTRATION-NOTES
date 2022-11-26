@@ -31,6 +31,13 @@ $ sudo -u postgres createuser --login --pwprompt testuser
 # Create a new database called testdb, owned by testuser.
 $ sudo -u postgres createdb --owner=testuser testdb
 ```
+#### CREATE DATABASE ROLE
+Role can function as a user or a group
+```
+mytest=# CREATE ROLE testrole WITH LOGIN PASSWORD 'password'; //Creating database user
+mytest=# ALTER ROLE testrole CREATEDB; //Allow to Create DB
+mytest=#\du //Check available Roles
+```
 #### SQL
 ```
 // List Databases
@@ -50,6 +57,9 @@ mytest=# CREATE TYPE cat_enum AS ENUM ('coffee', 'tea');
 
 // Display all Enumeration type
 mytest=# \dT+
+
+// Display all Roles
+mytest=#\du
 
 // Create a new table.
 mytest=# CREATE TABLE IF NOT EXISTS cafe (
