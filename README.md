@@ -135,6 +135,10 @@ pg_dump -h localhost -p 5432 -U username -C -F p -b -v -f mydatabase.backup.sql 
 -- Run SQL script
 $ psql -U username -f filename.sql
 ```
+### REMOTE SETUP
+```
+todo
+```
 ### TROUBLESHOOTING
 #### Set/Allow non-default user to login
 ```
