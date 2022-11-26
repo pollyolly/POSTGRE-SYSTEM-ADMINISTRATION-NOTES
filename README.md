@@ -80,6 +80,9 @@ mytest=# DELETE FROM cafe WHERE id = 6;
 
 // Quit
 mytest=# \q
+
+//Check Connection Info
+mytest=#\conninfo
 ```
 ### COMMON DATA TYPES 
 ```
