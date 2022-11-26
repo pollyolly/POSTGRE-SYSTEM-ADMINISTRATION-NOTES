@@ -37,7 +37,14 @@ Role can function as a user or a group
 mytest=# CREATE ROLE testrole WITH LOGIN PASSWORD 'password'; //Creating database user
 mytest=# ALTER ROLE testrole CREATEDB; //Allow to Create DB
 mytest=#\du //Check available Roles
+
+Roles attributes:
+CREATEDB = allow create db
+SUPERUSER = allow query
+REPLICATION
+CREATEROLE
 ```
+[Postgres Roles](https://www.postgresql.org/docs/current/sql-alterrole.html)
 #### SQL
 ```
 // List Databases
