@@ -1,5 +1,5 @@
 ### INSTALL POSTGRE
-```
+```vim
 # Create the file repository configuration:
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
@@ -14,17 +14,17 @@ sudo apt-get update
 sudo apt-get -y install postgresql
 ```
 ### CONFIGURATION FILE
-```
+```vim
 /etc/postgresql/10/main/postgresql.conf 
 ```
 ### LOGIN AS SUPER USER
-```
+```vim
 $sudo -u postgres psql
 postgres=# select version(); --Check Version
 ```
 ### POSTGRE COMMAND
 #### CREATE USER AND CREATE DB
-```
+```vim
 // Create a new PostgreSQL user called testuser, allow user to login, but NOT creating databases
 $ sudo -u postgres createuser --login --pwprompt testuser
 
@@ -33,7 +33,7 @@ $ sudo -u postgres createdb --owner=testuser testdb
 ```
 #### CREATE DATABASE ROLE
 Role can function as a user or a group (used for database connection)
-```
+```vim
 mytest=# CREATE ROLE testrole WITH LOGIN PASSWORD 'password'; //Creating database user
 mytest=# ALTER ROLE testrole CREATEDB; //Allow to Create DB
 mytest=#\du //Check available Roles
@@ -46,7 +46,7 @@ CREATEROLE
 ```
 [Postgres Roles](https://www.postgresql.org/docs/current/sql-alterrole.html)
 #### SQL
-```
+```vim
 // List Databases
 postgres=# \l
 
@@ -102,7 +102,7 @@ mytest=# \q
 mytest=#\conninfo
 ```
 ### COMMON DATA TYPES 
-```
+```vim
 1. INT, SMALLINT: whole number. There is no UNSIGNED attribute in PostgreSQL.
 2. SERIAL: auto-increment integer (AUTO_INCREMENT in MySQL).
 3. REAL, DOUBLE: single and double precision floating-point number.
@@ -111,7 +111,7 @@ mytest=#\conninfo
 6. DATE, TIME, TIMESTAMP, INTERVAL: date and time.
 ```
 ### SET PASSWORD FOR POSTGRES
-```
+```vim
 -- Login in to server via "psql" with user "postgres"
 $ sudo -u postgres psql
 ......
@@ -131,7 +131,7 @@ postgres=# SELECT * FROM pg_user;
 postgres=# \q
 ```
 ### CREATE GROUP AND USER
-```
+```vim
 -- Create a login user role
 CREATE ROLE user1 LOGIN PASSWORD 'xxxx' CREATEDB VALID UNTIL 'infinity';
 
@@ -144,14 +144,14 @@ CREATE ROLE group1 INHERIT;
 GRANT group1 TO user1;
 ```
 ### BACKUP AND RESTORE
-```
+```vim
 -- Create a compressed backup for a database
 pg_dump -h localhost -p 5432 -U username -F c -b -v -f mydatabase.backup mydatabase
 
 -- Create a plain-text backup for a database, including the CREATE DATABASE
 pg_dump -h localhost -p 5432 -U username -C -F p -b -v -f mydatabase.backup.sql mydatabase
 ```
-```
+```vim
 -- Run SQL script
 $ psql -U username -f filename.sql
 ```
