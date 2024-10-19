@@ -156,9 +156,8 @@ pg_dump -h localhost -p 5432 -U username -C -F p -b -v -f mydatabase.backup.sql 
 $ psql -U username -f filename.sql
 ```
 ### REMOTE SETUP
-```
-todo
-```
+
+[postgresql-remote-connection-with-pgadmin-on-a-virtual-private-server-ubuntu](https://medium.com/@johnmark_76235/postgresql-remote-connection-with-pgadmin-on-a-virtual-private-server-ubuntu-f82bcc9e197c)
 ### TROUBLESHOOTING
 #### Set/Allow non-default user to login
 ```
