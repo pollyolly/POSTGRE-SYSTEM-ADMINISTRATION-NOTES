@@ -1,17 +1,17 @@
 ### INSTALL POSTGRE
 ```bash
 # Create the file repository configuration:
-sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+$sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
 # Import the repository signing key:
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+$wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 
 # Update the package lists:
-sudo apt-get update
+$sudo apt-get update
 
 # Install the latest version of PostgreSQL.
 # If you want a specific version, use 'postgresql-12' or similar instead of 'postgresql':
-sudo apt-get -y install postgresql
+$sudo apt-get -y install postgresql
 ```
 ### CONFIGURATION FILE
 ```vim
@@ -26,10 +26,10 @@ postgres=# select version(); --Check Version
 #### CREATE USER AND CREATE DB
 ```vim
 // Create a new PostgreSQL user called testuser, allow user to login, but NOT creating databases
-$ sudo -u postgres createuser --login --pwprompt testuser
+$sudo -u postgres createuser --login --pwprompt testuser
 
 # Create a new database called testdb, owned by testuser.
-$ sudo -u postgres createdb --owner=testuser testdb
+$sudo -u postgres createdb --owner=testuser testdb
 ```
 #### CREATE DATABASE ROLE
 Role can function as a user or a group (used for database connection)
@@ -66,7 +66,7 @@ postgres=#\list
 postgres=# \l
 
 // Create Database
-postgres=# CREATE DATABASE mytestdb;
+postgres=# CREATE DATABASE mytest;
 
 //Use Database or Connect to Database
 postgres=# \c mytest
@@ -128,22 +128,22 @@ mytest=#\conninfo
 ### SET PASSWORD FOR POSTGRES
 ```vim
 -- Login in to server via "psql" with user "postgres"
-$ sudo -u postgres psql
+$sudo -u postgres psql
 ......
  
 -- Change password for current user "postgres"
-postgres=# \password postgres
+$postgres=# \password postgres
 Enter new password: xxxx
 Enter it again: xxxx
   
 -- Display the user table
-postgres=# SELECT * FROM pg_user;
+$postgres=# SELECT * FROM pg_user;
  usename  | usesysid | usecreatedb | usesuper | usecatupd | userepl |  passwd  | valuntil | useconfig 
 ----------+----------+-------------+----------+-----------+---------+----------+----------+-----------
  postgres |       10 | t           | t        | t         | t       | ******** |          |
  
 -- Quit
-postgres=# \q
+$postgres=# \q
 ```
 ### CREATE GROUP AND USER
 ```vim
@@ -161,14 +161,14 @@ GRANT group1 TO user1;
 ### BACKUP AND RESTORE
 ```vim
 -- Create a compressed backup for a database
-pg_dump -h localhost -p 5432 -U username -F c -b -v -f mydatabase.backup mydatabase
+$pg_dump -h localhost -p 5432 -U username -F c -b -v -f mydatabase.backup mydatabase
 
 -- Create a plain-text backup for a database, including the CREATE DATABASE
-pg_dump -h localhost -p 5432 -U username -C -F p -b -v -f mydatabase.backup.sql mydatabase
+$pg_dump -h localhost -p 5432 -U username -C -F p -b -v -f mydatabase.backup.sql mydatabase
 ```
 ```vim
 -- Run SQL script
-$ psql -U username -f filename.sql
+$psql -U username -f filename.sql
 ```
 ### REMOTE SETUP
 [PostgreSQL-Remote-connection-with-pgadmin-on-a-virtual-private-server-ubuntu](https://medium.com/@johnmark_76235/postgresql-remote-connection-with-pgadmin-on-a-virtual-private-server-ubuntu-f82bcc9e197c)
