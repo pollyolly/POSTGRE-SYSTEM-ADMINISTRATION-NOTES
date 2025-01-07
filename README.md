@@ -129,7 +129,6 @@ mytest=#\conninfo
 ```vim
 -- Login in to server via "psql" with user "postgres"
 $sudo -u postgres psql
-......
  
 -- Change password for current user "postgres"
 $postgres=# \password postgres
@@ -159,22 +158,26 @@ CREATE ROLE group1 INHERIT;
 GRANT group1 TO user1;
 ```
 ### BACKUP AND RESTORE
-```vim
+```sql
 -- Create a compressed backup for a database
 $pg_dump -h localhost -p 5432 -U username -F c -b -v -f mydatabase.backup mydatabase
 
 -- Create a plain-text backup for a database, including the CREATE DATABASE
 $pg_dump -h localhost -p 5432 -U username -C -F p -b -v -f mydatabase.backup.sql mydatabase
 ```
-```vim
+```sql
 -- Run SQL script
 $psql -U username -f filename.sql
 ```
-### REMOTE SETUP
+### LINKS
+
+[pg-tuner](https://pgtune.leopard.in.ua/)
+
 [PostgreSQL-Remote-connection-with-pgadmin-on-a-virtual-private-server-ubuntu](https://medium.com/@johnmark_76235/postgresql-remote-connection-with-pgadmin-on-a-virtual-private-server-ubuntu-f82bcc9e197c)
 
-### BACKUP
 [PostgreSQL Backup](https://medium.com/@johnmark_76235/postgresql-backup-5b2ca6956410)
+
+[Getting Started with PostgreSQL](https://www3.ntu.edu.sg/home/ehchua/programming/sql/PostgreSQL_GetStarted.html)
 
 ### TROUBLESHOOTING
 #### Set/Allow non-default user to login
@@ -183,7 +186,3 @@ $psql -U username -f filename.sql
 # TYPE  DATABASE    USER        ADDRESS          METHOD
 local   testdb      testuser                     md5
 ```
-
-
-### REFERENCES
-[Getting Started with PostgreSQL](https://www3.ntu.edu.sg/home/ehchua/programming/sql/PostgreSQL_GetStarted.html)
