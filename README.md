@@ -1,5 +1,10 @@
 ### INSTALL POSTGRE
 ```bash
+#Install specific postgresql version
+$ sudo apt install -y postgresql-common
+$ sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+$ sudo apt install postgresql-12
+
 # Update the package lists:
 $sudo apt-get update
 
