@@ -179,7 +179,7 @@ $psql -U username -f filename.sql
 
 [Getting Started with PostgreSQL](https://www3.ntu.edu.sg/home/ehchua/programming/sql/PostgreSQL_GetStarted.html)
 
-### TROUBLESHOOTING
+### TROUBLESHOOT
 #### Set/Allow non-default user to login
 ```
 /etc/postgresql/10/main/pg_hba.conf
