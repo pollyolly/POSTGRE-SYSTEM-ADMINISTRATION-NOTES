@@ -47,6 +47,10 @@ CREATEROLE
 [Postgres Roles](https://www.postgresql.org/docs/current/sql-alterrole.html)
 #### SQL
 ```vim
+//Use Database
+postgres=#\c sample_database
+//Show all Database
+postgres=#\list
 // List Databases
 postgres=# \l
 
