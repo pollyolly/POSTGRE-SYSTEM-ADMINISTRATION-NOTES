@@ -171,7 +171,7 @@ $psql -U username -f filename.sql
 
 [pg-tuner](https://pgtune.leopard.in.ua/)
 
-### LINKS
+### HELPFUL LINKS
 
 [PostgreSQL-Remote-connection-with-pgadmin-on-a-virtual-private-server-ubuntu](https://medium.com/@johnmark_76235/postgresql-remote-connection-with-pgadmin-on-a-virtual-private-server-ubuntu-f82bcc9e197c)
 
