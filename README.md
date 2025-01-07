@@ -5,10 +5,10 @@ $ sudo apt install -y postgresql-common
 $ sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
 $ sudo apt install postgresql-12
 
-# Update the package lists:
+# Update the package lists
 $sudo apt-get update
 
-# Install the latest version of PostgreSQL.
+# Install the latest version of PostgreSQL
 $sudo apt-get -y install postgresql
 ```
 ### CONFIGURATION FILE
