@@ -45,17 +45,28 @@ REPLICATION
 CREATEROLE
 ```
 [Postgres Roles](https://www.postgresql.org/docs/current/sql-alterrole.html)
+
+#### Permissions
+```sql
+-- Remove Access to Query
+REVOKE ALL PRIVILEGES ON DATABASE dianna_db FROM other_username;
+REVOKE ALL ON DATABASE dianna_db FROM PUBLIC;
+-- Grant all privileges to user
+GRANT ALL PRIVILEGES ON DATABASE "dianna_db" to dianna;
+```
 #### SQL
 ```vim
 //Use Database
 postgres=#\c sample_database
+
 //Show all Database
 postgres=#\list
+
 // List Databases
 postgres=# \l
 
 // Create Database
-postgres=# CREATE DATABASE mytest;
+postgres=# CREATE DATABASE mytestdb;
 
 //Use Database or Connect to Database
 postgres=# \c mytest
@@ -160,8 +171,11 @@ pg_dump -h localhost -p 5432 -U username -C -F p -b -v -f mydatabase.backup.sql 
 $ psql -U username -f filename.sql
 ```
 ### REMOTE SETUP
+[PostgreSQL-Remote-connection-with-pgadmin-on-a-virtual-private-server-ubuntu](https://medium.com/@johnmark_76235/postgresql-remote-connection-with-pgadmin-on-a-virtual-private-server-ubuntu-f82bcc9e197c)
 
-[postgresql-remote-connection-with-pgadmin-on-a-virtual-private-server-ubuntu](https://medium.com/@johnmark_76235/postgresql-remote-connection-with-pgadmin-on-a-virtual-private-server-ubuntu-f82bcc9e197c)
+### BACKUP
+[PostgreSQL Backup](https://medium.com/@johnmark_76235/postgresql-backup-5b2ca6956410)
+
 ### TROUBLESHOOTING
 #### Set/Allow non-default user to login
 ```
